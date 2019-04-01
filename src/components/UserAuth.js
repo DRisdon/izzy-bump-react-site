@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 import Login from './Login';
 import Signup from './Signup';
 
-
 class UserAuth extends Component {
-  constructor(){
+  constructor() {
     super();
     // set up state
     this.state = {
@@ -12,20 +11,20 @@ class UserAuth extends Component {
     }
   }
 
-  toggleMode(e){ // toggle between the two modes
+  toggleMode(e) { // toggle between the two modes
     e.preventDefault();
     this.setState(prev => { // the mode is what it is not
-      prev.mode = prev.mode === "login" ? 'signup' : 'login';
+      prev.mode = prev.mode === "login"
+        ? 'signup'
+        : 'login';
       return prev
     })
   }
 
-  render(){
-    return this.state.mode === "login" ? (
-      <Login {...this.props} toggleMode={this.toggleMode.bind(this)} />
-    ) : (
-      <Signup {...this.props} toggleMode={this.toggleMode.bind(this)} />
-    )
+  render() {
+    return this.state.mode === "login"
+      ? (<Login {...this.props} toggleMode={this.toggleMode.bind(this)}/>)
+      : (<Signup {...this.props} toggleMode={this.toggleMode.bind(this)}/>)
   }
 }
 export default UserAuth;

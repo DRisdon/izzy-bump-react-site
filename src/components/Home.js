@@ -1,11 +1,9 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react';
 
 class Home extends Component {
 
   render() {
-    return (
-      <div>IZZY BUMP</div>
-    );
+    return (<h1>IZZY BUMP</h1>);
   }
 
 }
