@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import NavBar from './NavBar';
 
 class ArtworkIndex extends Component {
   constructor(props) {
@@ -29,8 +30,9 @@ class ArtworkIndex extends Component {
 
   render() {
     return (<div>
+      <NavBar currentPage={this.state.artType}/>
       <h1>{this.state.artType.toUpperCase()}</h1>
-      {this.state.pictures.length > 0 && this.state.pictures[0].url}
+      {this.state.pictures.length > 0 && <img src={this.state.pictures[0].url}></img>}
     </div>);
   }
 

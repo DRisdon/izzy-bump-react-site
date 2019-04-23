@@ -1,15 +1,15 @@
 import React, {Component} from 'react';
 import NavBar from './NavBar';
 
-class Home extends Component {
+class Contact extends Component {
 
   render() {
     return (<div>
-      <NavBar currentPage='home'/>
-      <h1>IZZY BUMP</h1>
+      <NavBar currentPage='contact'/>
+      <h1>CONTACT</h1>
     </div>);
   }
 
 }
 
-export default Home;
+export default Contact;
