@@ -32,7 +32,11 @@ class ArtworkIndex extends Component {
     return (<div>
       <NavBar currentPage={this.state.artType}/>
       <h1>{this.state.artType.toUpperCase()}</h1>
-      {this.state.pictures.map((picture) => <img className='art-image' src={picture.url}></img>) }
+      <p>(click for full size image)</p>
+      <div className="art-wrapper">
+        {this.state.pictures.map((picture) => <img className='art-image' src={picture.url} alt={picture.name}></img>)}
+      </div>
+      {/* <button className='show-more'>show more</button> */}
     </div>);
   }
 

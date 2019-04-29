@@ -3,38 +3,35 @@ import {Link} from "react-router-dom";
 
 class NavBar extends Component {
 
-  constructor(props) {
-    super(props);
-  }
-
   render() {
 
     return (<header>
-      <nav>
-        <li className={(this.props.currentPage === 'home') && 'active'}>
-          <Link to='/'>
-            HOME
-          </Link>
-        </li>
-        <li className={(this.props.currentPage === 'about') && 'active'}>
+      {(this.props.currentPage !== 'home') &&
+      <h2 className='logo'>
+        <Link to='/'>
+          IZZY BUMP
+        </Link>
+      </h2>}
+      <nav className={(this.props.currentPage === 'home') && 'home-nav'}>
+        <li key='about' className={(this.props.currentPage === 'about') && 'active'}>
           <Link to='/about'>
             ABOUT
           </Link>
         </li>
-        <li className={(this.props.currentPage === 'artwork') && 'active'}>
+        <li key='artwork' className={(this.props.currentPage === 'artwork') && 'active'}>
           <Link to="/artwork">
             ARTWORK
           </Link>
         </li>
-        <li className={(this.props.currentPage === 'tattoos') && 'active'}>
+        <li key='tattoos' className={(this.props.currentPage === 'tattoos') && 'active'}>
           <Link to="/tattoos">
             TATTOOS
           </Link>
         </li>
-        <li>
+        <li key='shop'>
           <a href='https://www.etsy.com/shop/IsabelBumpArtObjects' target='blank'>SHOP</a>
         </li>
-        <li className={(this.props.currentPage === 'contact') && 'active'}>
+        <li key='contact' className={(this.props.currentPage === 'contact') && 'active'}>
           <Link to="/contact">
             CONTACT
           </Link>

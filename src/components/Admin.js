@@ -4,6 +4,7 @@ import axios from 'axios';
 import Cookies from '../helpers/Cookies';
 import UserAuth from './UserAuth';
 import AdminPage from './AdminPage';
+import Loading from '../images/loading.gif'
 
 class Admin extends Component {
   constructor() {
@@ -76,7 +77,7 @@ class Admin extends Component {
   renderView() {
     if (this.state.mode === 'loading') {
       return (<div className="loading">
-        <img src="https://s-media-cache-ak0.pinimg.com/originals/8b/a8/ce/8ba8ce24910d7b2f4c147359a82d50ef.gif" alt="loading"/>
+        <img src={Loading} alt="loading"/>
       </div>)
     } else if (this.state.mode === 'auth') {
       return (<UserAuth setUser={this.setUser.bind(this)} url={this.state.url}/>)
