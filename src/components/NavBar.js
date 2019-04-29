@@ -32,7 +32,7 @@ class NavBar extends Component {
           </Link>
         </li>
         <li>
-          <a>SHOP</a>
+          <a href='https://www.etsy.com/shop/IsabelBumpArtObjects' target='blank'>SHOP</a>
         </li>
         <li className={(this.props.currentPage === 'contact') && 'active'}>
           <Link to="/contact">

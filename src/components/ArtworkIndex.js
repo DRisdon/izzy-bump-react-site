@@ -32,7 +32,7 @@ class ArtworkIndex extends Component {
     return (<div>
       <NavBar currentPage={this.state.artType}/>
       <h1>{this.state.artType.toUpperCase()}</h1>
-      {this.state.pictures.length > 0 && <img src={this.state.pictures[0].url}></img>}
+      {this.state.pictures.map((picture) => <img className='art-image' src={picture.url}></img>) }
     </div>);
   }
 
