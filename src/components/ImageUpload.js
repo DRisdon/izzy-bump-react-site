@@ -34,11 +34,9 @@ class ImageUpload extends Component {
     data.append('image', image);
     data.append('pictureType', this.props.uploadType)
     console.log(data);
-    axios.post(`http://localhost:8080/pictures?auth_token=${this.props.user.token}`,
-      data).then(response => {
-        this.props.addImage(response)
-        this.closeImageUpload()
-      });
+    axios.post(`http://localhost:8080/pictures?auth_token=${this.props.user.token}`, data).then(response => {
+      this.props.addImage(response)
+    });
   }
 
   changeName(e) {
@@ -58,25 +56,30 @@ class ImageUpload extends Component {
   }
 
   render() {
-    return (<div className="image-upload-wrapper" onClick={this.closeImageUpload}>
+    return (<div className="image-upload-wrapper">
       <div className='image-upload'>
         <button className='close' onClick={this.closeImageUpload}>close</button>
-        {!this.state.uploading && <form className="image-form" onSubmit={this.onSubmit}>
-          <label>
-            Uploading {this.props.uploadType}
-          </label>
-          <input type='file' name={this.state.image} onChange={this.changeImage}  accept='image/gif, image/jpeg, image/png'/>
-          <label>
-            Name:
-          </label>
-          <input type='text' value={this.state.name} onChange={this.changeName}/>
+        {
+          !this.state.uploading && <form className="image-form" onSubmit={this.onSubmit}>
+              <label>
+                Uploading {this.props.uploadType}
+              </label>
+              <input type='file' name={this.state.image} onChange={this.changeImage} accept='image/gif, image/jpeg, image/png'/> {
+                this.props.uploadType === 'artwork' && <label>
+                    Name:
+                  </label>
+              }
+              {this.props.uploadType === 'artwork' && <input type='text' value={this.state.name} onChange={this.changeName}/>}
 
-          <label>
-            Description:
-          </label>
-          <textarea className='description' rows="10" value={this.state.description} onChange={this.changeDescription}/>
-          <button type='submit' value='Submit'>Submit</button>
-        </form>}
+              {
+                this.props.uploadType === 'artwork' && <label>
+                    Description:
+                  </label>
+              }
+              {this.props.uploadType === 'artwork' && <textarea className='description' rows="10" value={this.state.description} onChange={this.changeDescription}/>}
+              <button type='submit' value='Submit'>Submit</button>
+            </form>
+        }
         {this.state.uploading && <img src={Loading} alt="loading"/>}
       </div>
     </div>);

@@ -18,7 +18,7 @@ class AdminPage extends Component {
 
     this.openImageUpload = this.openImageUpload.bind(this);
     this.closeImageUpload = this.closeImageUpload.bind(this);
-    this.addImage = this.addImage.bind(this);
+    this.deleteImage = this.deleteImage.bind(this);
     this.openImageView = this.openImageView.bind(this);
     this.closeImageView = this.closeImageView.bind(this);
   }
@@ -47,28 +47,31 @@ class AdminPage extends Component {
     }
   }
 
+  deleteImage(id) {
+    axios.delete(`http://localhost:8080/pictures/id/${id}?auth_token=${this.props.user.token}`).then(response => {
+      console.log('response', response);
+      this.setState({mode: 'default', selectedImage: null})
+    });
+  }
+
   openImageUpload(e) {
-    this.setState({mode: 'imageUpload', uploadType: e.target.dataset.type})
+    this.setState({mode: 'imageUpload', uploadType: e.target.dataset.type});
   }
 
   closeImageUpload(e) {
-    this.setState({mode: 'default', uploadType: ''})
+    this.setState({mode: 'default', uploadType: ''});
   }
 
   openImageView(e) {
     console.log(e.target);
     axios.get(`http://localhost:8080/pictures/id/${e.target.dataset.key}`).then(response => {
       console.log('response', response);
-      this.setState({mode: 'imageView', selectedImage: response.data})
+      this.setState({mode: 'imageView', selectedImage: response.data});
     })
   }
 
   closeImageView(e) {
-    this.setState({mode: 'default', selectedImage: null})
-  }
-
-  addImage(image) {
-    console.log(image);
+    this.setState({mode: 'default', selectedImage: null});
   }
 
   render() {
@@ -78,27 +81,18 @@ class AdminPage extends Component {
       <button onClick={this.openImageUpload} data-type='artwork'>Upload</button>
       <div className="art-wrapper">
         {this.state.mode === 'loading' && <img src={Loading} alt="loading"/>}
-        {this.state.artwork.map(
-          (picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.url} alt={picture.name} onClick={this.openImageView}></img>
-        )}
+        {this.state.artwork.map((picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
 
       <h2>TATTOOS</h2>
       <button onClick={this.openImageUpload} data-type='tattoo'>Upload</button>
       <div className="art-wrapper">
         {this.state.mode === 'loading' && <img src={Loading} alt="loading"/>}
-        {this.state.tattoos.map(
-          (picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.url} alt={picture.name} onClick={this.openImageView}></img>
-        )}
+        {this.state.tattoos.map((picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
-      {
-        (this.state.mode === 'imageUpload') &&
-        <ImageUpload closeImageUpload={this.closeImageUpload} addImage={this.addImage} uploadType={this.state.uploadType} {...this.props}/>
-      }
-      {
-        (this.state.mode === 'imageView') &&
-        <ImageView closeImageView={this.closeImageView} deleteImage={this.deleteImage} image={this.state.selectedImage} {...this.props}/>
-      }
+      {(this.state.mode === 'imageUpload') && <ImageUpload closeImageUpload={this.closeImageUpload} uploadType={this.state.uploadType} {...this.props}/>}
+      {(this.state.mode === 'imageView') && <ImageView closeImageView={this.closeImageView} deleteImage={this.deleteImage} image={this.state.selectedImage} {...this.props}/>}
+      <br/>
     </div>);
   }
 
