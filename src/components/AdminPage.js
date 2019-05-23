@@ -11,7 +11,8 @@ class AdminPage extends Component {
     this.state = {
       artwork: [],
       tattoos: [],
-      mode: 'loading',
+      artMode: 'loading',
+      tattooMode: 'loading',
       uploadType: '',
       selectedImage: null
     };
@@ -26,11 +27,11 @@ class AdminPage extends Component {
   componentDidMount() {
     axios.get(`http://localhost:8080/pictures/artwork`).then(response => {
       console.log('response', response);
-      this.setState({artwork: response.data, mode: 'default'})
+      this.setState({artwork: response.data, artMode: 'default'})
     });
     axios.get(`http://localhost:8080/pictures/tattoos`).then(response => {
       console.log('response', response);
-      this.setState({tattoos: response.data, mode: 'default'})
+      this.setState({tattoos: response.data, tattooMode: 'default'})
     });
   }
 
@@ -80,14 +81,14 @@ class AdminPage extends Component {
       <h2>ARTWORK</h2>
       <button onClick={this.openImageUpload} data-type='artwork'>Upload</button>
       <div className="art-wrapper">
-        {this.state.mode === 'loading' && <img src={Loading} alt="loading"/>}
+        {(this.state.artModeode === 'loading') && <img src={Loading} alt="loading"/>}
         {this.state.artwork.map((picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
 
       <h2>TATTOOS</h2>
       <button onClick={this.openImageUpload} data-type='tattoo'>Upload</button>
       <div className="art-wrapper">
-        {this.state.mode === 'loading' && <img src={Loading} alt="loading"/>}
+        {(this.state.tattooMode === 'loading') && <img src={Loading} alt="loading"/>}
         {this.state.tattoos.map((picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
       {(this.state.mode === 'imageUpload') && <ImageUpload closeImageUpload={this.closeImageUpload} uploadType={this.state.uploadType} {...this.props}/>}

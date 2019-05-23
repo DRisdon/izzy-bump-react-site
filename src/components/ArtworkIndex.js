@@ -6,15 +6,19 @@ class ArtworkIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      artType: '',
-      pictures: []
+      pictures: [],
+      featured: []
     };
   }
 
   componentDidMount() {
     axios.get(`http://localhost:8080/pictures/${this.props.artType}`).then(response => {
       console.log('response', response);
-      this.setState({pictures: response.data, artType: this.props.artType})
+      this.setState({pictures: response.data})
+    });
+    axios.get(`http://localhost:8080/pictures/${this.props.artType}/featured`).then(response => {
+      console.log('response', response);
+      this.setState({featured: response.data})
     });
   }
 
@@ -23,7 +27,11 @@ class ArtworkIndex extends Component {
     if (artType !== prevProps.artType) {
       axios.get(`http://localhost:8080/pictures/${this.props.artType}`).then(response => {
         console.log('response', response);
-        this.setState({pictures: response.data, artType: this.props.artType})
+        this.setState({pictures: response.data})
+      });
+      axios.get(`http://localhost:8080/pictures/${this.props.artType}/featured`).then(response => {
+        console.log('response', response);
+        this.setState({featured: response.data})
       });
     }
   }
@@ -31,12 +39,13 @@ class ArtworkIndex extends Component {
   render() {
     return (<div>
       <NavBar currentPage={this.state.artType}/>
-      <h1>{this.state.artType.toUpperCase()}</h1>
-      <p>(click for full size image)</p>
+      <h1>{this.props.artType.toUpperCase()}</h1>
       <div className="art-wrapper">
-        {this.state.pictures.map((picture) => <img className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
+      {this.state.featured.map((picture) => <img key={picture.id} className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
+        {this.state.pictures.map((picture) => <img key={picture.id} className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
       </div>
       {/* <button className='show-more'>show more</button> */}
+      <br/>
     </div>);
   }
 

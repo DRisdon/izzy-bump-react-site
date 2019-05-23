@@ -12,18 +12,18 @@ class NavBar extends Component {
           IZZY BUMP
         </Link>
       </h2>}
-      <nav className={(this.props.currentPage === 'home') && 'home-nav'}>
-        <li key='about' className={(this.props.currentPage === 'about') && 'active'}>
+      <nav className={(this.props.currentPage === 'home') ? 'home-nav' : undefined}>
+        <li key='about' className={(this.props.currentPage === 'about') ? 'active' : undefined}>
           <Link to='/about'>
             ABOUT
           </Link>
         </li>
-        <li key='artwork' className={(this.props.currentPage === 'artwork') && 'active'}>
+        <li key='artwork' className={(this.props.currentPage === 'artwork') ? 'active' : undefined}>
           <Link to="/artwork">
             ARTWORK
           </Link>
         </li>
-        <li key='tattoos' className={(this.props.currentPage === 'tattoos') && 'active'}>
+        <li key='tattoos' className={(this.props.currentPage === 'tattoos') ? 'active' : undefined}>
           <Link to="/tattoos">
             TATTOOS
           </Link>
@@ -31,7 +31,7 @@ class NavBar extends Component {
         <li key='shop'>
           <a href='https://www.etsy.com/shop/IsabelBumpArtObjects' target='blank'>SHOP</a>
         </li>
-        <li key='contact' className={(this.props.currentPage === 'contact') && 'active'}>
+        <li key='contact' className={(this.props.currentPage === 'contact') ? 'active' : undefined}>
           <Link to="/contact">
             CONTACT
           </Link>

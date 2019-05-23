@@ -35,7 +35,7 @@ class ImageUpload extends Component {
     data.append('pictureType', this.props.uploadType)
     console.log(data);
     axios.post(`http://localhost:8080/pictures?auth_token=${this.props.user.token}`, data).then(response => {
-      this.props.addImage(response)
+      this.closeImageUpload()
     });
   }
 

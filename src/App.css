@@ -5,6 +5,7 @@ body, html, #root {
   height: 100vh;
   font-family: 'Lato', serif;
   color: #363534;
+  letter-spacing: 1px;
 }
 
 .App {
@@ -33,6 +34,15 @@ nav {
   font-size: 20px;
 }
 
+.home-wrapper {
+  height: 50vh;
+  margin-bottom: 5%;
+}
+
+.home-picture {
+  height: 100%;
+}
+
 .logo a {
   text-decoration: none;
   padding: 3px;
@@ -45,6 +55,10 @@ h1 {
   font-weight: normal;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.home-logo {
+  font-size: 4em;
 }
 
 h2 {
@@ -110,6 +124,24 @@ img {
   object-fit: cover;
   margin: 10px;
   transition: .2s all;
+}
+
+.about-me {
+    margin: 0 20% 0% 20%;
+}
+
+.bio {
+  padding-top: 0px;
+  text-align: justify;
+  font-size: 16px;
+  /* text-indent: 36px; */
+  line-height: 25px;
+}
+
+.headshot {
+  width: 350px;
+  float: left;
+  padding-right: 15px;
 }
 
 .art-wrapper {
@@ -217,9 +249,15 @@ input {
 }
 
 @media (max-width: 800px) {
+  body {
+    width: 100vw;
+    overflow: auto;
+  }
+
   nav {
     flex-direction: column;
     padding: 0;
+    width: 100%;
   }
 
   .logo {
@@ -244,5 +282,23 @@ input {
   .art-image {
     width: 100px;
     height: 100px;
+  }
+
+  .about-me {
+    margin: 0 15% 15% 15%;
+    display: block;
+  }
+
+  .headshot {
+    width: 90%;
+    padding-right: 0;
+    float: none;
+  }
+
+  .bio {
+    line-height: normal;
+    letter-spacing: normal;
+    padding: 0;
+    text-align: justify;
   }
 }

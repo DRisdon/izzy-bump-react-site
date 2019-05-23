@@ -35,7 +35,7 @@ class ImageView extends Component {
       <div className="image-view-wrapper">
         <div className='image-view'>
           <button className='close' onClick={this.closeImageView}>close</button>
-          <img src={this.props.image.url} className='admin-zoom'></img>
+          <img src={this.props.image.thumbnail} className='admin-zoom'></img>
           {this.state.mode === 'default' && <button className='delete' onClick={this.confirmDelete}>delete</button>}
           {this.state.mode === 'confirm' && <p>Are you sure you want to delete this image?</p>}
           {this.state.mode === 'confirm' && <button className='delete' onClick={this.deleteImage}>yes</button>}
