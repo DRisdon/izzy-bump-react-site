@@ -5,10 +5,8 @@ class Home extends Component {
 
   render() {
     return (<div>
-      <h1 className='home-logo'>IZZY BUMP</h1>
-      <h2>TATTOOS & FINE ART</h2>
       <div className='home-wrapper'>
-      <img className='home-picture' src="https://res.cloudinary.com/dczipv49x/image/upload/v1558388280/FullSizeRender_wxewcj.jpg" alt='izzy bump'/>
+      <img className='home-picture' src="https://res.cloudinary.com/dczipv49x/image/upload/v1558723854/websitetitle_qaq8co.jpg" alt='IZZY BUMP ART AND TATTOOS'/>
       </div>
       <NavBar currentPage='home'/>
     </div>);

@@ -1,11 +1,16 @@
+@font-face {
+  font-family: Hammock;
+  src: url(fonts/HAMMOCK-Black.otf);
+}
+
 body, html, #root {
   background-color: #eeeeee);
   margin: auto;
   min-height: 100%;
   height: 100vh;
-  font-family: 'Lato', serif;
+  font-family: 'Hammock', serif;
   color: #363534;
-  letter-spacing: 1px;
+  letter-spacing: 3px;
 }
 
 .App {
@@ -23,11 +28,15 @@ body, html, #root {
 nav {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   padding-right: 20em;
   padding-left: 20em;
   flex-wrap: wrap;
   margin-top: 10px;
+  margin-bottom: 0;
+  font-family: 'Roboto', serif;
+  z-index: 0;
+  position: relative;
 }
 
 .home-nav {
@@ -35,8 +44,8 @@ nav {
 }
 
 .home-wrapper {
-  height: 50vh;
-  margin-bottom: 5%;
+  height: 80vh;
+  margin: 2% 0;
 }
 
 .home-picture {
@@ -45,24 +54,27 @@ nav {
 
 .logo a {
   text-decoration: none;
-  padding: 3px;
+  padding: 0;
   border-radius: 3px;
   border: 1px solid transparent;
+  margin-top: 0px;
+  transition: .2s all
 }
 
 h1 {
-  font-size: 3em;
-  font-weight: normal;
-  margin-bottom: 10px;
-  margin-top: 10px;
-}
-
-.home-logo {
-  font-size: 4em;
+  font-size: 5em;
+  margin: 2%;
+  letter-spacing: auto;
+  line-height: 1px;
+  margin-bottom: 50px;
 }
 
 h2 {
-  font-size: 2em;
+  font-size: 4em;
+  letter-spacing: 4px;
+  line-height: 40%;
+  margin: 2%;
+  bottom: 50%;
 }
 
 button {
@@ -83,6 +95,11 @@ nav li {
   padding: 3px;
   border-radius: 3px;
   border: 1px solid transparent;
+  width: 100px;
+}
+
+.home-nav li {
+  width: auto;
 }
 
 button,
@@ -97,15 +114,22 @@ nav li a,
 }
 
 button:hover,
-nav li:hover,
-.logo a:hover {
+nav li:hover {
   cursor: pointer;
   border: 1px solid #7a7875;
-  transition: .2s all
+  transition: .2s all;
 }
 
 button:hover {
   background-color: #f0ecec;
+}
+
+.logo a:hover {
+  text-shadow: 0px 5px 1px lightgray;
+}
+
+.logo a:active {
+  text-shadow: 0px 4px 1px lightgray;
 }
 
 button:focus {
@@ -113,8 +137,7 @@ button:focus {
 }
 
 button:active,
-nav li:active,
-.logo a:active {
+nav li:active {
   cursor: pointer;
   border: 1px solid #363534;
   outline: none;
@@ -136,6 +159,8 @@ img {
   font-size: 16px;
   /* text-indent: 36px; */
   line-height: 25px;
+  font-family: 'Roboto', serif;
+  letter-spacing: 1px;
 }
 
 .headshot {
@@ -153,12 +178,19 @@ img {
   height: 200px;
 }
 
-.admin-image {
+.admin-false {
   width: 130px;
   height: 130px;
 }
 
-.admin-image:hover,
+.admin-true {
+  width: 130px;
+  height: 130px;
+  box-shadow: 0px 5px 1px rgb(154, 246, 246);
+}
+
+.admin-true:hover,
+.admin-false:hover,
 .art-image:hover {
   box-shadow: 0px 5px 1px lightgray;
   cursor: pointer;
@@ -200,6 +232,8 @@ img {
 .image-view {
   height: auto;
   width: 350px;
+  display: block;
+  justify-content: center;
 }
 
 .image-form {
@@ -211,6 +245,10 @@ img {
 
 .image-form input {
   width: 40%;
+}
+
+label {
+  font-family: 'Roboto';
 }
 
 .description {
@@ -251,13 +289,15 @@ input {
 @media (max-width: 800px) {
   body {
     width: 100vw;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: scroll;
   }
 
   nav {
     flex-direction: column;
     padding: 0;
     width: 100%;
+    margin: 5% 0;
   }
 
   .logo {
@@ -265,7 +305,8 @@ input {
   }
 
   .home-nav {
-    margin-top: 30px;
+    margin: 0;
+    width: 100vw;
   }
 
   nav li {
@@ -273,10 +314,29 @@ input {
     margin: 0;
     border: 1px solid #eeeeee;
     padding: 2px;
+    width: auto;
   }
 
   .home-nav li {
-    font-size: 26px;
+    font-size: 28px;
+    width: 100vw;
+    margin: 4% 0;
+  }
+
+  .home-wrapper {
+    width: 100vw;
+    margin: 0;
+    height: auto;
+  }
+
+  .home-picture {
+    width: 100%;
+    height: auto;
+    margin: 0;
+  }
+
+  .art-wrapper {
+    margin: 0;
   }
 
   .art-image {

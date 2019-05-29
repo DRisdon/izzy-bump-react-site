@@ -17,6 +17,7 @@ class AdminPage extends Component {
       selectedImage: null
     };
 
+    this.toggleFeatured = this.toggleFeatured.bind(this)
     this.openImageUpload = this.openImageUpload.bind(this);
     this.closeImageUpload = this.closeImageUpload.bind(this);
     this.deleteImage = this.deleteImage.bind(this);
@@ -46,6 +47,12 @@ class AdminPage extends Component {
         this.setState({tattoos: response.data})
       });
     }
+  }
+
+  toggleFeatured(id, featured) {
+    axios.put(`http://localhost:8080/pictures/id/${id}?auth_token=${this.props.user.token}`, {featured: featured}).then(response => {
+      console.log('response', response);
+    });
   }
 
   deleteImage(id) {
@@ -82,17 +89,17 @@ class AdminPage extends Component {
       <button onClick={this.openImageUpload} data-type='artwork'>Upload</button>
       <div className="art-wrapper">
         {(this.state.artModeode === 'loading') && <img src={Loading} alt="loading"/>}
-        {this.state.artwork.map((picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
+        {this.state.artwork.map((picture) => <img key={picture.id} data-key={picture.id} className={`admin-${picture.featured}`} src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
 
       <h2>TATTOOS</h2>
       <button onClick={this.openImageUpload} data-type='tattoo'>Upload</button>
       <div className="art-wrapper">
         {(this.state.tattooMode === 'loading') && <img src={Loading} alt="loading"/>}
-        {this.state.tattoos.map((picture) => <img key={picture.id} data-key={picture.id} className='admin-image' src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
+        {this.state.tattoos.map((picture) => <img key={picture.id} data-key={picture.id} className={`admin-${picture.featured}`} src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
       {(this.state.mode === 'imageUpload') && <ImageUpload closeImageUpload={this.closeImageUpload} uploadType={this.state.uploadType} {...this.props}/>}
-      {(this.state.mode === 'imageView') && <ImageView closeImageView={this.closeImageView} deleteImage={this.deleteImage} image={this.state.selectedImage} {...this.props}/>}
+      {(this.state.mode === 'imageView') && <ImageView toggleFeatured={this.toggleFeatured} closeImageView={this.closeImageView} deleteImage={this.deleteImage} image={this.state.selectedImage} {...this.props}/>}
       <br/>
     </div>);
   }

@@ -38,10 +38,10 @@ class ArtworkIndex extends Component {
 
   render() {
     return (<div>
-      <NavBar currentPage={this.state.artType}/>
+      <NavBar currentPage={this.props.artType}/>
       <h1>{this.props.artType.toUpperCase()}</h1>
       <div className="art-wrapper">
-      {this.state.featured.map((picture) => <img key={picture.id} className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
+        {this.state.featured.map((picture) => <img key={picture.id} className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
         {this.state.pictures.map((picture) => <img key={picture.id} className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
       </div>
       {/* <button className='show-more'>show more</button> */}
