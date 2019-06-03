@@ -11,8 +11,10 @@ class AdminPage extends Component {
     this.state = {
       artwork: [],
       tattoos: [],
+      designs: [],
       artMode: 'loading',
       tattooMode: 'loading',
+      designMode: 'loading',
       uploadType: '',
       selectedImage: null
     };
@@ -26,6 +28,7 @@ class AdminPage extends Component {
   }
 
   componentDidMount() {
+    document.title = "Admin Page";
     axios.get(`http://localhost:8080/pictures/artwork`).then(response => {
       console.log('response', response);
       this.setState({artwork: response.data, artMode: 'default'})
@@ -33,6 +36,10 @@ class AdminPage extends Component {
     axios.get(`http://localhost:8080/pictures/tattoos`).then(response => {
       console.log('response', response);
       this.setState({tattoos: response.data, tattooMode: 'default'})
+    });
+    axios.get(`http://localhost:8080/pictures/designs`).then(response => {
+      console.log('response', response);
+      this.setState({designs: response.data, designMode: 'default'})
     });
   }
 
@@ -45,6 +52,10 @@ class AdminPage extends Component {
       axios.get(`http://localhost:8080/pictures/tattoos`).then(response => {
         console.log('response', response);
         this.setState({tattoos: response.data})
+      });
+      axios.get(`http://localhost:8080/pictures/designs`).then(response => {
+        console.log('response', response);
+        this.setState({designs: response.data})
       });
     }
   }
@@ -98,6 +109,14 @@ class AdminPage extends Component {
         {(this.state.tattooMode === 'loading') && <img src={Loading} alt="loading"/>}
         {this.state.tattoos.map((picture) => <img key={picture.id} data-key={picture.id} className={`admin-${picture.featured}`} src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
       </div>
+
+      <h2>TATTOO DESIGNS</h2>
+      <button onClick={this.openImageUpload} data-type='design'>Upload</button>
+      <div className="art-wrapper">
+        {(this.state.designMode === 'loading') && <img src={Loading} alt="loading"/>}
+        {this.state.designs.map((picture) => <img key={picture.id} data-key={picture.id} className={`admin-${picture.featured}`} src={picture.thumbnail} alt={picture.name} onClick={this.openImageView}></img>)}
+      </div>
+
       {(this.state.mode === 'imageUpload') && <ImageUpload closeImageUpload={this.closeImageUpload} uploadType={this.state.uploadType} {...this.props}/>}
       {(this.state.mode === 'imageView') && <ImageView toggleFeatured={this.toggleFeatured} closeImageView={this.closeImageView} deleteImage={this.deleteImage} image={this.state.selectedImage} {...this.props}/>}
       <br/>

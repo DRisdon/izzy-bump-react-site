@@ -43,6 +43,15 @@ nav {
   font-size: 20px;
 }
 
+.tattoo-nav {
+  justify-content: space-around;
+  margin: 0 15%;
+}
+
+.tattoo-nav li {
+  width: 120px;
+}
+
 .home-wrapper {
   height: 80vh;
   margin: 2% 0;
@@ -321,6 +330,15 @@ input {
     font-size: 28px;
     width: 100vw;
     margin: 4% 0;
+  }
+
+  .tattoo-nav {
+    justify-content: space-around;
+    margin: 0;
+  }
+
+  .tattoo-nav li {
+    width: auto;
   }
 
   .home-wrapper {
