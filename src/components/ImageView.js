@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 import axios from 'axios'
+import Close from '../images/close.png'
 
 class ImageView extends Component {
 
@@ -36,7 +37,7 @@ class ImageView extends Component {
     this.setState({uploading: true})
     e.preventDefault();
     const data = new FormData();
-    const {name, description, image} = this.state
+    const {name, description} = this.state
     data.append('name', (name ? name : this.props.image.name));
     data.append('description', (description ? description : this.props.image.description));
     console.log(data);
@@ -68,10 +69,14 @@ class ImageView extends Component {
     this.props.closeImageView();
   }
 
+  handleInnerClick(e) {
+    e.stopPropagation();
+  }
+
   render() {
-    return (<div className="image-view-wrapper">
-      <div className='image-view'>
-        <button className='close' onClick={this.closeImageView}>close</button>
+    return (<div className="image-view-wrapper" onClick={this.closeImageView}>
+      <div className='image-view' onClick={this.handleInnerClick}>
+        <img className='close' src={Close} onClick={this.closeImageView}/>
         <img src={this.props.image.thumbnail} className='admin-zoom'></img>
         <button className='featured-toggle' onClick={this.toggleFeatured}>Featured: {this.state.featured.toString()}</button>
         <br/>

@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import Loading from '../images/loading.gif'
+import Close from '../images/close.png'
 
 class ImageUpload extends Component {
 
@@ -18,6 +19,7 @@ class ImageUpload extends Component {
     this.changeDescription = this.changeDescription.bind(this);
     this.changeImage = this.changeImage.bind(this);
     this.onSubmit = this.onSubmit.bind(this)
+    this.handleInnerClick = this.handleInnerClick.bind(this)
   }
 
   closeImageUpload() {
@@ -55,10 +57,14 @@ class ImageUpload extends Component {
     console.log(e.target.files[0]);
   }
 
+  handleInnerClick(e) {
+    e.stopPropagation();
+  }
+
   render() {
-    return (<div className="image-upload-wrapper">
-      <div className='image-upload'>
-        <button className='close' onClick={this.closeImageUpload}>close</button>
+    return (<div className="image-upload-wrapper" onClick={this.closeImageUpload}>
+      <div className='image-upload' onClick={this.handleInnerClick}>
+        <img className='close' src={Close} onClick={this.closeImageUpload}/>
         {
           !this.state.uploading && <form className="image-form" onSubmit={this.onSubmit}>
               <label>

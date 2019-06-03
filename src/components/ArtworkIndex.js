@@ -1,38 +1,62 @@
 import React, {Component} from 'react';
 import axios from 'axios'
 import NavBar from './NavBar';
+import ImageCarousel from './ImageCarousel'
 
 class ArtworkIndex extends Component {
   constructor(props) {
     super(props);
     this.state = {
       pictures: [],
-      artType: null
+      artType: null,
+      focus: null,
+      mode: 'default'
     };
 
     this.changeTattooType = this.changeTattooType.bind(this)
+    this.openCarousel = this.openCarousel.bind(this)
+    this.closeCarousel = this.closeCarousel.bind(this)
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/pictures/${this.state.artType ? this.state.artType : this.props.artType}`).then(response => {
+    axios.get(`http://localhost:8080/pictures/${this.props.artType}`).then(response => {
       console.log('response', response);
       this.setState({pictures: response.data, artType: this.props.artType})
     });
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const artType = this.state.artType ? this.state.artType : this.props.artType;
-    if (artType !== prevState.artType) {
-      console.log(artType)
-      axios.get(`http://localhost:8080/pictures/${this.state.artType}`).then(response => {
+    const artTypeProp = this.props.artType;
+    const artTypeState = this.state.artType
+    if ((artTypeProp !== prevProps.artType)) {
+      axios.get(`http://localhost:8080/pictures/${artTypeProp}`).then(response => {
         console.log('response', response);
-        this.setState({pictures: response.data})
+        this.setState({pictures: response.data, artType: artTypeProp})
+      });
+    } else if ((artTypeState!== prevState.artType)) {
+      axios.get(`http://localhost:8080/pictures/${artTypeState}`).then(response => {
+        console.log('response', response);
+        this.setState({pictures: response.data, artType: artTypeState})
       });
     }
   }
 
   changeTattooType(e) {
     this.setState({artType: e.target.dataset.type})
+  }
+
+  openCarousel(e) {
+    this.setState({
+      mode: 'carousel',
+      focus: e.target.dataset.index
+    })
+  }
+
+  closeCarousel(e) {
+    this.setState({
+      mode: 'default',
+      focus: null
+    })
   }
 
   render() {
@@ -52,10 +76,10 @@ class ArtworkIndex extends Component {
         </li>
       </nav>}
       <div className="art-wrapper">
-        {this.state.pictures.map((picture) => <img key={picture.id} className='art-image' src={picture.thumbnail} alt={picture.name}></img>)}
+        {this.state.pictures.map((picture, i) => <img key={picture.id} data-index={i} className='art-image' src={picture.thumbnail} alt={picture.name} onClick={this.openCarousel}/>)}
       </div>
-      {/* <button className='show-more'>show more</button> */}
       <br/>
+      {(this.state.mode === 'carousel') && <ImageCarousel closeCarousel={this.closeCarousel} pictures={this.state.pictures} focus={this.state.focus} {...this.props}/>}
     </div>);
   }
 
