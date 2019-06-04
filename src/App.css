@@ -170,7 +170,7 @@ img {
 }
 
 .about-me {
-    margin: 0 20% 0% 20%;
+  margin: 0 20% 0% 20%;
 }
 
 .bio {
@@ -315,11 +315,23 @@ label {
   cursor: pointer;
 }
 
-.login-page {
-  margin-left: auto;
-  text-align: center;
+.auth-form {
+  width: 100%;
+  align-items: center;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.auth-form form {
+  width: 20%;
+}
+
+.auth-form form input {
+  display: block;
+  justify-content: center;
+  width: 100%;
+  margin: 0;
 }
 
 input {
@@ -450,5 +462,13 @@ textarea {
 
   .carousel .slide .legend {
     visibility: hidden;
+  }
+
+  input {
+    width: 80%
+  }
+
+  textarea {
+    width: 80%%;
   }
 }

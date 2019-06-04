@@ -12,7 +12,8 @@ class Login extends Component {
       inputs: {
         email: '',
         password: ''
-      }
+      },
+      error: false
     }
   }
 
@@ -22,6 +23,8 @@ class Login extends Component {
     // send request to make sure the email and password are correct
     axios.post(`${this.props.url}/login`, this.state.inputs).then(res => { // set the user based off of the response
       this.props.setUser(res.data);
+    }).catch(err => {
+      this.setState({error: true})
     })
   }
 
@@ -36,9 +39,9 @@ class Login extends Component {
 
   render() {
     return (<div className="login-page">
-      <div className="background-color">
         <div className="auth-form">
           <h2>Log In</h2>
+          {this.state.error && <p className='error-message'>Incorrect login info</p>}
           <form onSubmit={this.login.bind(this)}>
 
             <label htmlFor='email'>Email</label>
@@ -49,12 +52,10 @@ class Login extends Component {
 
             <div className="form-buttons">
               <button type="submit" className="form-button">Login</button>
-              <button onClick={this.props.toggleMode} className="form-button">Sign Up</button>
             </div>
 
           </form>
         </div>
-      </div>
     </div>)
   }
 }
