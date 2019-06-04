@@ -75,7 +75,7 @@ onSubmit(e) {
       <button type="submit">Send</button>
       <br/>
       </form>}
-      {this.state.mode === 'sent' && <p>Your message has been sent!</p>}
+      {this.state.mode === 'sent' && <p className='message-sent'>Your message has been sent!</p>}
     </div>);
   }
 

@@ -369,6 +369,10 @@ textarea {
   font-family: 'Roboto'
 }
 
+.message-sent {
+  font-family: 'Roboto'
+}
+
 @media (max-width: 800px) {
   body {
     width: 100vw;
