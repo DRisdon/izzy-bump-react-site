@@ -27,7 +27,16 @@ render() {
     <div className='image-carousel' onClick={this.handleInnerClick}>
       <img className='close' src={Close} onClick={this.closeCarousel}/>
       <Carousel selectedItem={parseInt(this.props.focus)} showStatus={false} showIndicators={false} dynamicHeight={true} infiniteLoop={true} showThumbs={false}>
-        {this.props.pictures.map((picture, i) => <img key={picture.id} data-index={i} src={picture.url} alt={picture.name}/>)}
+        {this.props.pictures.map((picture, i) =>
+          <div>
+          <img key={picture.id} data-index={i} src={picture.url} alt={picture.name}/>
+          {picture.pictureType === 'artwork' && <p className="legend">
+            <span className='carousel-title'>{picture.name}</span>
+            <br/>
+            {picture.description}
+          </p>}
+        </div>
+        )}
       </Carousel>
     </div>
   </div>);

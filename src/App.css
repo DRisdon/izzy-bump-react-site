@@ -8,7 +8,7 @@ body, html, #root {
   margin: auto;
   min-height: 100%;
   height: 100vh;
-  font-family: 'Hammock', serif;
+  font-family: 'Hammock', sans-serif;
   color: #363534;
   letter-spacing: 3px;
 }
@@ -34,7 +34,7 @@ nav {
   flex-wrap: wrap;
   margin-top: 10px;
   margin-bottom: 0;
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
   z-index: 0;
   position: relative;
 }
@@ -168,7 +168,7 @@ img {
   font-size: 16px;
   /* text-indent: 36px; */
   line-height: 25px;
-  font-family: 'Roboto', serif;
+  font-family: 'Roboto', sans-serif;
   letter-spacing: 1px;
 }
 
@@ -189,6 +189,19 @@ img {
 
 .carousel img {
   margin: 0;
+}
+
+.carousel .slide .legend {
+  font-family: 'Roboto';
+  bottom: 0 !important;
+  margin-bottom: 0 !important;
+  height: auto;
+  transition: all .35s ease-in-out !important;
+}
+
+.carousel-title {
+  font-size: 20px;
+  font-family: 'Hammock';
 }
 
 .admin-false {
@@ -243,11 +256,9 @@ img {
 }
 
 .image-carousel {
-  width: auto;
-  max-width: 35%;
-  height: auto;
-  margin: 2% auto;
+  margin: 8% auto;
   padding-bottom: 0 20px 20px 20px;
+  max-width: 40%;
 }
 
 .image-view {
