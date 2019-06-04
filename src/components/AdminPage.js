@@ -29,15 +29,15 @@ class AdminPage extends Component {
 
   componentDidMount() {
     document.title = "Admin Page";
-    axios.get(`http://localhost:8080/pictures/artwork`).then(response => {
+    axios.get(`https://izzy-bump-api.herokuapp.com/pictures/artwork`).then(response => {
       console.log('response', response);
       this.setState({artwork: response.data, artMode: 'default'})
     });
-    axios.get(`http://localhost:8080/pictures/tattoos`).then(response => {
+    axios.get(`https://izzy-bump-api.herokuapp.com/pictures/tattoos`).then(response => {
       console.log('response', response);
       this.setState({tattoos: response.data, tattooMode: 'default'})
     });
-    axios.get(`http://localhost:8080/pictures/designs`).then(response => {
+    axios.get(`https://izzy-bump-api.herokuapp.com/pictures/designs`).then(response => {
       console.log('response', response);
       this.setState({designs: response.data, designMode: 'default'})
     });
@@ -45,15 +45,15 @@ class AdminPage extends Component {
 
   componentDidUpdate(prevProps, prevState) {
     if ((this.state.mode === 'default') && (prevState.mode !== 'default')) {
-      axios.get(`http://localhost:8080/pictures/artwork`).then(response => {
+      axios.get(`https://izzy-bump-api.herokuapp.com/pictures/artwork`).then(response => {
         console.log('response', response);
         this.setState({artwork: response.data})
       });
-      axios.get(`http://localhost:8080/pictures/tattoos`).then(response => {
+      axios.get(`https://izzy-bump-api.herokuapp.com/pictures/tattoos`).then(response => {
         console.log('response', response);
         this.setState({tattoos: response.data})
       });
-      axios.get(`http://localhost:8080/pictures/designs`).then(response => {
+      axios.get(`https://izzy-bump-api.herokuapp.com/pictures/designs`).then(response => {
         console.log('response', response);
         this.setState({designs: response.data})
       });
@@ -61,13 +61,13 @@ class AdminPage extends Component {
   }
 
   toggleFeatured(id, featured) {
-    axios.put(`http://localhost:8080/pictures/id/${id}?auth_token=${this.props.user.token}`, {featured: featured}).then(response => {
+    axios.put(`https://izzy-bump-api.herokuapp.com/pictures/id/${id}?auth_token=${this.props.user.token}`, {featured: featured}).then(response => {
       console.log('response', response);
     });
   }
 
   deleteImage(id) {
-    axios.delete(`http://localhost:8080/pictures/id/${id}?auth_token=${this.props.user.token}`).then(response => {
+    axios.delete(`https://izzy-bump-api.herokuapp.com/pictures/id/${id}?auth_token=${this.props.user.token}`).then(response => {
       console.log('response', response);
       this.setState({mode: 'default', selectedImage: null})
     });
@@ -83,7 +83,7 @@ class AdminPage extends Component {
 
   openImageView(e) {
     console.log(e.target);
-    axios.get(`http://localhost:8080/pictures/id/${e.target.dataset.key}`).then(response => {
+    axios.get(`https://izzy-bump-api.herokuapp.com/pictures/id/${e.target.dataset.key}`).then(response => {
       console.log('response', response);
       this.setState({mode: 'imageView', selectedImage: response.data});
     })

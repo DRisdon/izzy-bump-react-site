@@ -41,7 +41,7 @@ class ImageView extends Component {
     data.append('name', (name ? name : this.props.image.name));
     data.append('description', (description ? description : this.props.image.description));
     console.log(data);
-    axios.put(`http://localhost:8080/pictures/id/${this.props.image.id}?auth_token=${this.props.user.token}`, data).then(response => {
+    axios.put(`https://izzy-bump-api.herokuapp.com/pictures/id/${this.props.image.id}?auth_token=${this.props.user.token}`, data).then(response => {
       this.props.closeImageView();
     });
   }

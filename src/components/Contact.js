@@ -41,7 +41,7 @@ onSubmit(e) {
     subject: this.state.subject,
     text: this.state.message
   }
-  axios.post(`http://localhost:8080/mailer`, data).then(response => {
+  axios.post(`https://izzy-bump-api.herokuapp.com//mailer`, data).then(response => {
     console.log(response);
     if (response.data.message === 'Queued. Thank you.') {
       this.setState({mode: 'sent'})

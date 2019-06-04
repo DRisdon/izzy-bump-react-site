@@ -36,7 +36,7 @@ class ImageUpload extends Component {
     data.append('image', image);
     data.append('pictureType', this.props.uploadType)
     console.log(data);
-    axios.post(`http://localhost:8080/pictures?auth_token=${this.props.user.token}`, data).then(response => {
+    axios.post(`https://izzy-bump-api.herokuapp.com/pictures?auth_token=${this.props.user.token}`, data).then(response => {
       this.closeImageUpload()
     });
   }

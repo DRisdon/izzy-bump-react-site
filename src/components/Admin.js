@@ -18,7 +18,7 @@ class Admin extends Component {
       // url for the API we are using - uncomment the one you want to use
 
       // Express
-      url: 'http://localhost:8080',
+      url: 'https://izzy-bump-api.herokuapp.com/',
 
       // Rails
       // url: 'http://localhost:3000',

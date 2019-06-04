@@ -19,7 +19,7 @@ class ArtworkIndex extends Component {
   }
 
   componentDidMount() {
-    axios.get(`http://localhost:8080/pictures/${this.props.artType}`).then(response => {
+    axios.get(`https://izzy-bump-api.herokuapp.com//pictures/${this.props.artType}`).then(response => {
       console.log('response', response);
       this.setState({pictures: response.data, artType: this.props.artType})
     });
@@ -29,12 +29,12 @@ class ArtworkIndex extends Component {
     const artTypeProp = this.props.artType;
     const artTypeState = this.state.artType
     if ((artTypeProp !== prevProps.artType)) {
-      axios.get(`http://localhost:8080/pictures/${artTypeProp}`).then(response => {
+      axios.get(`https://izzy-bump-api.herokuapp.com//pictures/${artTypeProp}`).then(response => {
         console.log('response', response);
         this.setState({pictures: response.data, artType: artTypeProp})
       });
     } else if ((artTypeState!== prevState.artType)) {
-      axios.get(`http://localhost:8080/pictures/${artTypeState}`).then(response => {
+      axios.get(`https://izzy-bump-api.herokuapp.com//pictures/${artTypeState}`).then(response => {
         console.log('response', response);
         this.setState({pictures: response.data, artType: artTypeState})
       });
