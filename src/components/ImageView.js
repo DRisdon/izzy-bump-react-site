@@ -76,8 +76,8 @@ class ImageView extends Component {
   render() {
     return (<div className="image-view-wrapper" onClick={this.closeImageView}>
       <div className='image-view' onClick={this.handleInnerClick}>
-        <img className='close' src={Close} onClick={this.closeImageView}/>
-        <img src={this.props.image.thumbnail} className='admin-zoom'></img>
+        <img className='close' src={Close} onClick={this.closeImageView} alt='close'/>
+        <img src={this.props.image.thumbnail} className='admin-zoom' alt={this.props.image.name}></img>
         <button className='featured-toggle' onClick={this.toggleFeatured}>Featured: {this.state.featured.toString()}</button>
         <br/>
         <br/> {

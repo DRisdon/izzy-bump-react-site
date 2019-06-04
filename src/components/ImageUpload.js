@@ -64,7 +64,7 @@ class ImageUpload extends Component {
   render() {
     return (<div className="image-upload-wrapper" onClick={this.closeImageUpload}>
       <div className='image-upload' onClick={this.handleInnerClick}>
-        <img className='close' src={Close} onClick={this.closeImageUpload}/>
+        <img className='close' src={Close} onClick={this.closeImageUpload} alt='close'/>
         {
           !this.state.uploading && <form className="image-form" onSubmit={this.onSubmit}>
               <label>

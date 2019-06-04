@@ -48,7 +48,7 @@ nav {
   margin: 0 15%;
 }
 
-.tattoo-nav li {
+.tattoo-nav button {
   width: 120px;
 }
 
@@ -96,7 +96,7 @@ button {
   border: 1px solid #363534;
 }
 
-nav li {
+nav a, nav button {
   text-transform: uppercase;
   flex-direction: row;
   justify-content: space-around;
@@ -105,14 +105,15 @@ nav li {
   border-radius: 3px;
   border: 1px solid transparent;
   width: 100px;
+  text-decoration: none;
 }
 
-.home-nav li {
+.home-nav a {
   width: auto;
 }
 
 button,
-nav li a,
+nav a,
 .logo a {
   color: #363534;
   text-decoration: none;
@@ -123,7 +124,7 @@ nav li a,
 }
 
 button:hover,
-nav li:hover {
+nav a:hover {
   cursor: pointer;
   border: 1px solid #7a7875;
   transition: .2s all;
@@ -131,6 +132,16 @@ nav li:hover {
 
 button:hover {
   background-color: #f0ecec;
+}
+
+nav button {
+  /* border: 1px solid #dfdddd; */
+  letter-spacing: 3px;
+  font-size: 14px;
+}
+
+nav button:hover {
+  background-color: inherit;
 }
 
 .logo a:hover {
@@ -197,6 +208,7 @@ img {
   margin-bottom: 0 !important;
   height: auto;
   transition: all .35s ease-in-out !important;
+  padding: none !important;
 }
 
 .carousel-title {
@@ -276,7 +288,7 @@ img {
 }
 
 .image-form input {
-  width: 40%;
+  width: 60%;
 }
 
 label {
@@ -285,7 +297,7 @@ label {
 
 .description {
   height: 100px;
-  width: 40%;
+  width: 60%;
   margin: 15px;
 }
 
@@ -313,13 +325,36 @@ label {
 input {
   height: 25px;
   margin: 15px;
+  width: 25%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 
+textarea {
+  width: 25%;
+  margin-top: 20px;
+}
+
 .logout-button {
   margin-top: 10px;
+}
+
+.delete {
+  margin: 0 10px;
+}
+
+.contact-form {
+  align-items: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.error-message {
+  color: rgb(251, 144, 108);
+  font-family: 'Roboto'
 }
 
 @media (max-width: 800px) {
@@ -345,7 +380,7 @@ input {
     width: 100vw;
   }
 
-  nav li {
+  nav a {
     font-size: 16px;
     margin: 0;
     border: 1px solid #eeeeee;
@@ -353,7 +388,7 @@ input {
     width: auto;
   }
 
-  .home-nav li {
+  .home-nav a {
     font-size: 28px;
     width: 100vw;
     margin: 4% 0;
@@ -364,7 +399,7 @@ input {
     margin: 0;
   }
 
-  .tattoo-nav li {
+  .tattoo-nav button {
     width: auto;
   }
 
@@ -408,6 +443,12 @@ input {
   }
 
   .image-carousel {
-    max-width: 100%;
+    width: 100%;
+    height: auto;
+    max-width: 90vw;
+  }
+
+  .carousel .slide .legend {
+    visibility: hidden;
   }
 }

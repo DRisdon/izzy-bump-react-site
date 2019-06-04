@@ -7,7 +7,7 @@ class AboutPage extends Component {
     return (<div><NavBar currentPage='about'/>
       <h1>ABOUT ME</h1>
       <div className='about-me'>
-      <img className='headshot' src='https://res.cloudinary.com/dczipv49x/image/upload/v1558388280/FullSizeRender_wxewcj.jpg'/>
+      <img className='headshot' src='https://res.cloudinary.com/dczipv49x/image/upload/v1558388280/FullSizeRender_wxewcj.jpg' alt="Izzy"/>
       <p className='bio'>
       Izzy is an artist currently based outside of Philadelphia, PA, and has been tattooing at Intimate Body
        Art Studios in Glenside since January of 2017. While she has experience with many different styles, subjects, and skin

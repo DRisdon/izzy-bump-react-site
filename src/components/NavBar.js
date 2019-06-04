@@ -13,29 +13,19 @@ class NavBar extends Component {
         </Link>
       </h2>}
       <nav className={(this.props.currentPage === 'home') ? 'home-nav' : undefined}>
-        <li key='about' className={(this.props.currentPage === 'about') ? 'active' : undefined}>
-          <Link to='/about'>
+          <Link to='/about' className={(this.props.currentPage === 'about') ? 'active' : undefined}>
             ABOUT
           </Link>
-        </li>
-        <li key='artwork' className={(this.props.currentPage === 'artwork') ? 'active' : undefined}>
-          <Link to="/artwork">
+          <Link to="/artwork" key='artwork' className={(this.props.currentPage === 'artwork') ? 'active' : undefined}>
             ARTWORK
           </Link>
-        </li>
-        <li key='tattoos' className={(this.props.currentPage === 'tattoos') ? 'active' : undefined}>
-          <Link to="/tattoos">
+          <Link to="/tattoos" key='tattoos' className={(this.props.currentPage === 'tattoos') ? 'active' : undefined}>
             TATTOOS
           </Link>
-        </li>
-        <li key='shop'>
           <a href='https://www.etsy.com/shop/IsabelBumpArtObjects' target='blank'>SHOP</a>
-        </li>
-        <li key='contact' className={(this.props.currentPage === 'contact') ? 'active' : undefined}>
-          <Link to="/contact">
+          <Link to="/contact" key='contact' className={(this.props.currentPage === 'contact') ? 'active' : undefined}>
             CONTACT
           </Link>
-        </li>
       </nav>
     </header>);
   }

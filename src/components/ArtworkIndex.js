@@ -64,16 +64,16 @@ class ArtworkIndex extends Component {
       <NavBar currentPage={this.props.artType}/>
       <h1>{this.props.artType.toUpperCase()}</h1>
       {((this.state.artType === 'tattoos') || (this.state.artType === 'designs')) && <nav className='tattoo-nav'>
-        <li key='tattoos' className={(this.state.artType === 'tattoos') ? 'active' : undefined}>
+        <button key='tattoos' className={(this.state.artType === 'tattoos') ? 'active' : undefined}>
           <div data-type='tattoos' onClick={this.changeTattooType}>
             COMPLETED
           </div>
-        </li>
-        <li key='designs' className={(this.state.artType === 'designs') ? 'active' : undefined}>
+        </button>
+        <button key='designs' className={(this.state.artType === 'designs') ? 'active' : undefined}>
           <div data-type='designs' onClick={this.changeTattooType}>
             AVAILABLE
           </div>
-        </li>
+        </button>
       </nav>}
       <div className="art-wrapper">
         {this.state.pictures.map((picture, i) => <img key={picture.id} data-index={i} className='art-image' src={picture.thumbnail} alt={picture.name} onClick={this.openCarousel}/>)}

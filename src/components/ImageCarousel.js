@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import {Carousel} from 'react-responsive-carousel';
 import Close from '../images/close.png'
@@ -25,7 +24,7 @@ class ImageCarousel extends Component {
 render() {
   return (<div className="image-upload-wrapper" onClick={this.props.closeCarousel}>
     <div className='image-carousel' onClick={this.handleInnerClick}>
-      <img className='close' src={Close} onClick={this.closeCarousel}/>
+      <img className='close' src={Close} onClick={this.closeCarousel} alt='close'/>
       <Carousel selectedItem={parseInt(this.props.focus)} showStatus={false} showIndicators={false} dynamicHeight={true} infiniteLoop={true} showThumbs={false}>
         {this.props.pictures.map((picture, i) =>
           <div>
