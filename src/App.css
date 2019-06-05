@@ -91,7 +91,8 @@ button {
   flex-direction: row;
   justify-content: space-around;
   list-style: none;
-  padding: 3px;
+  padding: 3px 4px;
+  letter-spacing: 2px;
   border-radius: 3px;
   border: 1px solid #363534;
 }
@@ -366,11 +367,41 @@ textarea {
 
 .error-message {
   color: rgb(251, 144, 108);
-  font-family: 'Roboto'
+  font-family: 'Roboto';
+  margin-top: 0;
 }
 
 .message-sent {
   font-family: 'Roboto'
+}
+
+.contact-blurb {
+  font-size: 14px;
+  /* text-indent: 36px; */
+  line-height: 20px;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1px;
+  margin: 0 30% 2% 30%;
+  text-align: justify;
+}
+
+.contact-icon {
+  font-size: 50px !important;
+  color: #363534;
+  margin: 0;
+  text-decoration: none;
+}
+
+.contact-icon:hover {
+  text-shadow: 0px 5px 1px lightgray;
+  text-shadow: 0px 4px 1px lightgray;
+  transition: .2s all
+}
+
+.icon-label {
+  margin: 0  0 10px 0;
+  font-family: 'Roboto', sans-serif;
+  font-size: 8px;
 }
 
 @media (max-width: 800px) {

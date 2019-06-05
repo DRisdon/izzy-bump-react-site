@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import NavBar from './NavBar';
 import mailgun from 'mailgun-js'
 import axios from 'axios'
+import '../fonts/font-awesome-4.7.0/css/font-awesome.min.css'
 
 class Contact extends Component {
 
@@ -57,6 +58,12 @@ onSubmit(e) {
     return (<div>
       <NavBar currentPage='contact'/>
       <h1>CONTACT</h1>
+      <a className='contact-icon' href="https://www.instagram.com/isabump/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>
+      <p className='icon-label'>INSTAGRAM</p></a>
+      {(this.state.mode === 'writing' || this.state.mode === 'error') && <div>
+      <p className='contact-blurb'>If you’d like to contact Izzy to book a tattoo appointment or request a commissioned piece,
+      use the form below. Be sure to include what kind of art you are looking for (tattoo, watercolor, etc),
+      and a little bit about the subject of the piece. </p></div>}
       {this.state.mode === 'error' && <p className='error-message'>Something went wrong! Please make sure all fields are filled and try again.</p>}
       {(this.state.mode === 'writing' || this.state.mode === 'error') && <form className='contact-form' onSubmit={this.onSubmit}>
       <label>
@@ -75,6 +82,7 @@ onSubmit(e) {
       <button type="submit">Send</button>
       <br/>
       </form>}
+      <br/>
       {this.state.mode === 'sent' && <p className='message-sent'>Your message has been sent!</p>}
     </div>);
   }
