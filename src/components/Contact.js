@@ -58,8 +58,14 @@ onSubmit(e) {
     return (<div>
       <NavBar currentPage='contact'/>
       <h1>CONTACT</h1>
-      <a className='contact-icon' href="https://www.instagram.com/isabump/" target="_blank"><i class="fa fa-instagram" aria-hidden="true"></i>
+
+      <div className='social'>
+      <a className='contact-icon' href="https://www.instagram.com/isabump/" target="_blank"><i className="fa fa-instagram" aria-hidden="true"></i>
       <p className='icon-label'>INSTAGRAM</p></a>
+      <a className='contact-icon' href="https://www.facebook.com/isabump/" target="_blank"><i className="fa fa-facebook-square" aria-hidden="true"></i>
+      <p className='icon-label'>FACEBOOK</p></a>
+      </div>
+
       {(this.state.mode === 'writing' || this.state.mode === 'error') && <div>
       <p className='contact-blurb'>If you’d like to contact Izzy to book a tattoo appointment or request a commissioned piece,
       use the form below. Be sure to include what kind of art you are looking for (tattoo, watercolor, etc),

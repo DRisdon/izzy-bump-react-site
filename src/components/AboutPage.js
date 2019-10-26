@@ -5,7 +5,7 @@ class AboutPage extends Component {
 
   render() {
     return (<div><NavBar currentPage='about'/>
-      <h1>ABOUT ME</h1>
+      <h1>ABOUT THE ARTIST</h1>
       <div className='about-me'>
       <img className='headshot' src='https://res.cloudinary.com/dczipv49x/image/upload/v1558388280/FullSizeRender_wxewcj.jpg' alt="Izzy"/>
       <p className='bio'>
@@ -24,7 +24,7 @@ class AboutPage extends Component {
        <p className='bio'>
        Izzy is always interested in learning more about the art she has access to, and one of her favorite
        things about tattooing is learning the stories and science behind the subjects her clients give her.
-       She lives with her boyfriend Junji, and their two cats, little Lily and chirpy Ralph. 
+       She lives with her boyfriend Junji, and their two cats, little Lily and chirpy Ralph.
        </p>
       </div>
     </div>);
